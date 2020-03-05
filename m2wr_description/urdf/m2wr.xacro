@@ -5,7 +5,17 @@
   <xacro:include filename="$(find m2wr_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/gazebo.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/macro.xacro" />
-    
+  
+  <!-- include the ur10e -->
+  <!--xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro"/>   
+  <xacro:ur10e_robot prefix="" joint_limited="false"/>
+  <joint name="joint_ur" type="fixed">
+    <parent link="link_chassis" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint-->
+
+  
   <link name="link_chassis">
     <!-- pose and inertial -->
     <pose>0 0 0.1 0 0 0</pose>
@@ -25,16 +35,16 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.5 0.3 0.07"/>
+        <box size="1 0.6 0.15"/>
       </geometry>
       <material name="blue"/>
     </visual>
     
     <!-- caster front -->
     <collision name="caster_front_collision">
-      <origin rpy=" 0 0 0" xyz="0.35 0 -0.05"/>
+      <origin rpy=" 0 0 0" xyz="0.5 0 -0.08"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.08"/>
       </geometry>
       <surface>
         <friction>
@@ -48,9 +58,9 @@
       </surface>
     </collision>
     <visual name="caster_front_visual">
-      <origin rpy=" 0 0 0" xyz="0.2 0 -0.05"/>
+      <origin rpy=" 0 0 0" xyz="0.4 0 -0.08"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.08"/>
       </geometry>
     </visual>
     </link>
@@ -59,14 +69,14 @@
   <xacro:link_wheel name="link_right_wheel" />
     
   <!--   Joint for right wheel  -->
-  <xacro:joint_wheel name="joint_right_wheel"  child="link_right_wheel"  origin_xyz="-0.05 0.15 0"  />
+  <xacro:joint_wheel name="joint_right_wheel"  child="link_right_wheel"  origin_xyz="-0.05 0.3 0"  />
    
     
   <!-- create Left Wheel link -->
   <xacro:link_wheel name="link_left_wheel" />
     
   <!--   Joint for left wheel  -->
-  <xacro:joint_wheel name="joint_left_wheel"   child="link_left_wheel"   origin_xyz="-0.05 -0.15 0" />
+  <xacro:joint_wheel name="joint_left_wheel"   child="link_left_wheel"   origin_xyz="-0.05 -0.3 0" />
 
   <link name="sensor_laser">
     <inertial>
@@ -93,8 +103,10 @@
   </link>
  
   <joint name="joint_sensor_laser" type="fixed">
-    <origin xyz="0.15 0 0.05" rpy="0 0 0"/>
+    <origin xyz="0.3 0 0.05" rpy="0 0 0"/>
     <parent link="link_chassis"/>
     <child link="sensor_laser"/>
   </joint>
+
+  
 </robot>
