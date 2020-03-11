@@ -29,7 +29,7 @@
     
     <collision name="collision_chassis">
       <geometry>
-        <box size="0.5 0.3 0.07"/>
+        <box size="1.0 0.3 0.07"/>
       </geometry>
     </collision>
     
@@ -67,17 +67,21 @@
     </link>
   
   <!-- Create wheel right link -->    
-  <xacro:link_wheel name="link_right_wheel" />
+  <xacro:link_wheel name="link_right_front_wheel" />
+  <xacro:link_wheel name="link_right_rear_wheel" />
     
   <!--   Joint for right wheel  -->
-  <xacro:joint_wheel name="joint_right_wheel"  child="link_right_wheel"  origin_xyz="-0.05 0.3 0"  />
+  <xacro:joint_wheel name="joint_right_front_wheel"  child="link_right_front_wheel"  origin_xyz="0.5 0.3 0"  />
+  <xacro:joint_wheel name="joint_right_rear_wheel"  child="link_right_rear_wheel"  origin_xyz="-0.5 0.3 0"  />
    
     
   <!-- create Left Wheel link -->
-  <xacro:link_wheel name="link_left_wheel" />
+  <xacro:link_wheel name="link_left_front_wheel" />
+  <xacro:link_wheel name="link_left_rear_wheel" />
     
   <!--   Joint for left wheel  -->
-  <xacro:joint_wheel name="joint_left_wheel"   child="link_left_wheel"   origin_xyz="-0.05 -0.3 0" />
+  <xacro:joint_wheel name="joint_left_front_wheel"   child="link_left_front_wheel"   origin_xyz="0.5 -0.3 0" />
+  <xacro:joint_wheel name="joint_left_rear_wheel"  child="link_left_rear_wheel"   origin_xyz="-0.5 -0.3 0" />
 
   <link name="sensor_laser">
     <inertial>
