@@ -3,6 +3,7 @@
        name="ur10e" >
 
   <!-- ur10e -->
+  
   <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/macro.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/materials.xacro" />

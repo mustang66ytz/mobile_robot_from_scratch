@@ -2,18 +2,19 @@
 <robot name="m2wr" xmlns:xacro="https://www.ros.org/wiki/xacro" >
     
   <!--include the xacro files-->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/gazebo.xacro" />
   <xacro:include filename="$(find m2wr_description)/urdf/macro.xacro" />
   
   <!-- include the ur10e -->
-  <!--xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro"/>   
+  <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro"/>   
   <xacro:ur10e_robot prefix="" joint_limited="false"/>
   <joint name="joint_ur" type="fixed">
     <parent link="link_chassis" />
     <child link = "base_link" />
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-  </joint-->
+  </joint>
 
   
   <link name="link_chassis">
